@@ -1,0 +1,19 @@
+1) 安装xl2tpd_1.2.5%2Bzju-1_amd64.deb
+
+2) 手动配置IP，子网掩码，网关，因为小教七特殊的环境
+   10.15.14.214/24,10.15.14.1
+
+3) 在terminal中输入命令：
+	
+	sudo vpn-connect -c 
+
+	username: 21636046@a
+	password: ********
+
+	sudo vpn-connect
+
+4) 关闭网络：
+	
+	sudo vpn-connect -d
+
+
