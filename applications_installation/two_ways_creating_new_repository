@@ -29,3 +29,11 @@ git push -u origin master
 
 
 两种方法的不同：本地推送的需要初始化init，并且需要添加remote add origin
+
+
+若向已clone到本地的仓库中写入一个文件或一个目录（文件夹），要想同步到git账户中的仓库中，先要：
+git add 文件名或目录名（文件夹名）
+git commit -m "注释"
+然后，
+git remote add origin git@github.com:hmozju/backup_Ubuntu.git
+git push -u origin master

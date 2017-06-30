@@ -1,0 +1,20 @@
+1) Ubuntu系统缺省登录用户是user(系统安装时设置的用户)
+
+2) 从user切换到root用户，只需要简单地执行 sudo su 即可
+		   
+ 注意：出于安全考虑，默认Ubuntu的root用户是没有固定密码的，它的密码是随机产生,且动态改变的，貌似是每5分钟改变一次，所以用 su 是不可以的，因为不知道root的密码
+				
+ 3) 从root切换回user，只需要执行：su user,或直接输入 exit，也可Ctrl+D组合键退出
+						 
+ 4) 为root设定一个密码：
+							
+ 执行命令： sudo passwd root 然后根据提示来即可
+ 然后就可以 su root 输入密码来登录root用户了
+ 注意：即使是给root设定密码后，仍然可以 sudo su 切换到root用户
+
+ 5) 禁用和启用root登录：
+
+禁用：sudo passwd -l root (只是禁用，root密码还在)
+启用：sudo passwd -u root
+-l:表示lock，-u:表示unlock
+
