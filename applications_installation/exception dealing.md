@@ -143,9 +143,9 @@ def temp_convert(var):
 temp_convert("xyz")
 ```
 
-###用户自定义异常
-通过创建一个新的异常类，程序可以命名它们自己的异常，。异常应该是典型的继承自Exception类，通过直接或间接的方式。
-#####实例
+### 用户自定义异常
+通过创建一个新的异常类，程序可以命名它们自己的异常。异常应该是典型的继承自Exception类，通过直接或间接的方式。
+##### 实例
 ```Python
 class NetworkError(RuntimeError):
 	def __init__(self,arg):
@@ -156,7 +156,7 @@ except NetworkError,e:
 	print e.args
 	
 ```
-#####实例
+##### 实例
 ```Python
 #！/usr/bin/python
 # -*- coding: UTF-8 -*-
