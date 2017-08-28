@@ -78,7 +78,7 @@ try的工作原理:当开始一个try语句后，Python就在当前程序的上�
 
 ##### 实例1：打开一个文件，在该文件中的内容写入内容，且未发生异常
 ```Python
-#！/usr/bin/python
+#!/usr/bin/python
 #-*- coding: UTF-8 -*-
 
 try:
@@ -132,7 +132,7 @@ except ExceptionType,Argument:
 ```
 ##### 实例
 ```Python
-#！/usr/bin/python
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
 def temp_convert(var):
@@ -158,7 +158,7 @@ except NetworkError,e:
 ```
 ##### 实例
 ```Python
-#！/usr/bin/python
+#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 try:
 	1/0
