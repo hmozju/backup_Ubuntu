@@ -1,0 +1,40 @@
+# 需要两个主要的安装包:libnfc 和 mfoc
+# 下载地址:https://github.com/nfc-tools/libnfc 
+#          https://github.com/nfc-tools/mfoc
+
+1. 预先安装需要的编译库(可能你的操作系统已经安装过部分或全部)
+  sudo apt install libusb-dev libpcsclite-dev libusb-0.1-4 libpcsclite1 libccid pcscd
+
+2. 正式安装libnfc
+  方法一: git clone https://github.com/nfc-tools/libnfc.git
+  方法二: 按前述下载地址下载安装包,解压:
+          tar -xvzf libnfc-1.x.x-xx.tar.gz libnfc
+  进入libnfc子目录: cd /libnfc 
+  编译,安装: ./configure --with-drivers=pn532_uart
+             make 
+             make install
+  (如果用sudo ./configure..., sudo make, sudo make install, 则最后
+   要 sudo nfc-list, mfoc安装和使用一样的道理)
+
+  3. 复制安装文件里面的libnfc.conf.sample配置文件到目录/etc/下并改名为
+  libnfc.conf:
+    cp /libnfc/libnfc.conf.sample /etc/nfc/libnfc.conf
+    然后,取消最后一行的注释: device.connstring = "pn532_uart:/dev/ttyUSB0"
+    
+  4. 接下来,就可以开始写入已经复制的卡信息: 
+    nfc-mfclassic W a u mycard.dump blank.dump
+    nfc-mfclassic w a mycard.dump blank.dump(without changing the UID)
+    nfc-mfsetuid xxxxxxxx (此处是复制的卡UID)
+  如果直接暴力写入一张未知的卡,用:
+    nfc-mfclassic W a mycard.dump
+
+  5.使用mfoc,与libnfc类似:下载安装包,解压,进入,编译,安装(这里会发现
+     解压文件里可能没有configure, 使用: autoreconf -is 会生成configure文件,
+     libnfc文件里有release的shell脚本,是集成了configure, make, make install的,
+     当然,也可以自己autoreconf -is 生成configure文件, make, make install)
+
+  6. mfoc的使用: mfoc -O mycard.dump(读出来卡信息并保存为mycard.dump)
+  注意: mfoc -h 和 nfc-mfclassic -h 列举出具体功能,如有疑问,可以-h查看
+  也可以访问github官网(https://github.com/nfc-tools/mfoc 和 https://
+      github.com/nfc-tools/libnfc)
+
